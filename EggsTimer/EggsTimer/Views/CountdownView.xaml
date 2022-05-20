@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EggsTimer.ViewModels"
+             x:Class="EggsTimer.Views.CountdownView"
+             Title="EGGS TIMER">
+    
+    <ContentPage.BindingContext>
+        <viewmodels:CountdownViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Counter}"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            
+            <Button Command="{Binding CancelCommand}"
+                    Text="Cancel"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="20"
+            />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

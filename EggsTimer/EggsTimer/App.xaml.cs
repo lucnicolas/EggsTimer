@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EggsTimer.Services;
+using EggsTimer.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +13,9 @@ namespace EggsTimer
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            NavigationService.AddView(nameof(CountdownView), typeof(CountdownView));
+
+            MainPage = new NavigationPage(new TimerView());        
         }
 
         protected override void OnStart()
