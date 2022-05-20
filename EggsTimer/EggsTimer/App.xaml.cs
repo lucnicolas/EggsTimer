@@ -14,6 +14,7 @@ namespace EggsTimer
             InitializeComponent();
 
             NavigationService.AddView(nameof(CountdownView), typeof(CountdownView));
+            NavigationService.AddView(nameof(HistoryView), typeof(HistoryView));
 
             MainPage = new NavigationPage(new TimerView());
         }

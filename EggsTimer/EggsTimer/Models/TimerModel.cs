@@ -7,6 +7,7 @@ namespace EggsTimer.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime StartTime { get; set; }
-        public EggsCookingTime Time { get; set; }
+        public EggsCookingTime Duration { get; set; }
+        public bool IsStarted { get; set; }
     }
 }

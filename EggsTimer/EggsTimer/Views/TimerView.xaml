@@ -12,6 +12,11 @@
 
     <ContentPage.Content>
         <StackLayout>
+            <Button Text="History"
+                    Command="{Binding HistoryCommand}"
+                    VerticalOptions="StartAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="20" />
 
             <Button Text="Boiled"
                     Command="{Binding StartBoiledCommand}"

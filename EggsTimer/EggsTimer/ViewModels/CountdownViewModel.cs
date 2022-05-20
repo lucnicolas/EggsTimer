@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EggsTimer.Models;
 using EggsTimer.Services;
 using Xamarin.Forms;
+using Timer = System.Timers.Timer;
 
 namespace EggsTimer.ViewModels
 {
@@ -11,6 +14,8 @@ namespace EggsTimer.ViewModels
     {
         private readonly VibratorService vibratorService = new VibratorService();
 
+        private Timer timer;
+        private string cTimer;
         private TimeSpan counter;
 
         private bool isCanceled;
@@ -39,8 +44,19 @@ namespace EggsTimer.ViewModels
 
         public async Task StartAsync(EggsCookingTime time)
         {
-            var timer = await timerService.Create(time);
-            Counter = TimeSpan.FromSeconds((int) timer.Time);
+            DateTime d = DateTime.Now;
+            DateTime currentDate = new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
+            TimerModel timerModel = new TimerModel()
+            {
+                Name = Enum.GetName(typeof(EggsCookingTime), time), 
+                StartTime = currentDate,
+                Duration = time,
+                IsStarted = true
+            };
+            timerModel = await timerService.Create(timerModel);
+            DateTime endTime = currentDate.AddSeconds((int)timerModel.Duration);
+
+            Counter = (endTime - currentDate);
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 if (isCanceled)

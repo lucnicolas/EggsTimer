@@ -9,16 +9,18 @@ namespace EggsTimer.ViewModels
     {
         public TimerViewModel()
         {
-            StartBoiledCommand = new Command(async () => await StartAsync(EggsCookingTime.Boiled));
-            StartSoftBoiledCommand = new Command(async () => await StartAsync(EggsCookingTime.SoftBoiled));
-            StartHardBoiledCommand = new Command(async () => await StartAsync(EggsCookingTime.HardBoiled));
+            StartBoiledCommand = new Command(async () => await StartCountdownAsync(EggsCookingTime.Boiled));
+            StartSoftBoiledCommand = new Command(async () => await StartCountdownAsync(EggsCookingTime.SoftBoiled));
+            StartHardBoiledCommand = new Command(async () => await StartCountdownAsync(EggsCookingTime.HardBoiled));
+            HistoryCommand = new Command(async () => await navigationService.PushAsync("HistoryView"));
         }
 
         public ICommand StartBoiledCommand { get; set; }
         public ICommand StartSoftBoiledCommand { get; set; }
         public ICommand StartHardBoiledCommand { get; set; }
+        public ICommand HistoryCommand { get; set; }
 
-        public async Task StartAsync(EggsCookingTime time)
+        public async Task StartCountdownAsync(EggsCookingTime time)
         {
             await navigationService.PushAsync("CountdownView");
             messagingService.Send(StartTimer, time);

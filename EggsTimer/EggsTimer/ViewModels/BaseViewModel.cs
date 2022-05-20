@@ -7,6 +7,7 @@ namespace EggsTimer.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         protected const string StartTimer = "StartTimer";
+        protected const string CancelTimer = "CancelTimer";
 
         protected static readonly TimerService timerService = new TimerService();
         protected static readonly MessagingService messagingService = new MessagingService();

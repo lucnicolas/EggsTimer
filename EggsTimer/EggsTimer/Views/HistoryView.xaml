@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EggsTimer.ViewModels"
+             x:Class="EggsTimer.Views.HistoryView"
+             Title="EGGS TIMER">
+    
+    <ContentPage.BindingContext>
+        <viewmodels:HistoryViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                ItemsSource="{Binding Items}"
+                RefreshCommand="{Binding RefreshCommand}"
+                SelectedItem="{Binding Selected, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Detail="{Binding Duration}" Text="{Binding StartTime}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
