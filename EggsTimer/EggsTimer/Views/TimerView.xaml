@@ -5,32 +5,29 @@
              xmlns:viewmodels="clr-namespace:EggsTimer.ViewModels"
              x:Class="EggsTimer.Views.TimerView"
              Title="EGGS TIMER">
-    
+
     <ContentPage.BindingContext>
         <viewmodels:TimerViewModel />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <StackLayout>
-                
+
             <Button Text="Boiled"
                     Command="{Binding StartBoiledCommand}"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
-                    CornerRadius="20"
-            />
-                <Button Command="{Binding StartSoftBoiledCommand}"
-                        Text="Soft Boiled"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="CenterAndExpand"
-                        CornerRadius="20"
-                />
-                <Button Command="{Binding StartHardBoiledCommand}"
-                        Text="Hard Boiled"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="CenterAndExpand"
-                        CornerRadius="20"
-                />
+                    CornerRadius="20" />
+            <Button Command="{Binding StartSoftBoiledCommand}"
+                    Text="Soft Boiled"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="20" />
+            <Button Command="{Binding StartHardBoiledCommand}"
+                    Text="Hard Boiled"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="20" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

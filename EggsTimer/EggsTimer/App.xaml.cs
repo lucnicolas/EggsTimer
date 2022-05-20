@@ -15,7 +15,7 @@ namespace EggsTimer
 
             NavigationService.AddView(nameof(CountdownView), typeof(CountdownView));
 
-            MainPage = new NavigationPage(new TimerView());        
+            MainPage = new NavigationPage(new TimerView());
         }
 
         protected override void OnStart()

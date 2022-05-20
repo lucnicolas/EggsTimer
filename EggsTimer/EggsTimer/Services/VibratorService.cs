@@ -9,8 +9,6 @@ namespace EggsTimer.Services
     {
         private bool isVibrating;
 
-        public event EventHandler<bool> IsVibratingChanged;
-
         public bool IsVibrating
         {
             get => isVibrating;
@@ -24,6 +22,8 @@ namespace EggsTimer.Services
             }
         }
 
+        public event EventHandler<bool> IsVibratingChanged;
+
         public void Vibrate(double duration = 500)
         {
             if (IsVibrating)
@@ -34,9 +34,9 @@ namespace EggsTimer.Services
             IsVibrating = true;
             Vibration.Vibrate(duration);
 
-            ThreadPool.QueueUserWorkItem((state) =>
+            ThreadPool.QueueUserWorkItem(state =>
             {
-                Thread.Sleep((int)duration);
+                Thread.Sleep((int) duration);
                 IsVibrating = false;
 
                 Debug.WriteLine($">>>>> {Environment.TickCount} VibratorService Vibrate({duration}) Stop");

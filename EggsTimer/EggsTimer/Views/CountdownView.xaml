@@ -5,23 +5,22 @@
              xmlns:viewmodels="clr-namespace:EggsTimer.ViewModels"
              x:Class="EggsTimer.Views.CountdownView"
              Title="EGGS TIMER">
-    
+
     <ContentPage.BindingContext>
-        <viewmodels:CountdownViewModel/>
+        <viewmodels:CountdownViewModel />
     </ContentPage.BindingContext>
-    
+
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding Counter}"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />
-            
+
             <Button Command="{Binding CancelCommand}"
                     Text="Cancel"
                     VerticalOptions="EndAndExpand"
                     HorizontalOptions="CenterAndExpand"
-                    Margin="20"
-            />
+                    Margin="20" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
