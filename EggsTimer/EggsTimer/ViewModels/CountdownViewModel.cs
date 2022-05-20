@@ -23,10 +23,10 @@ namespace EggsTimer.ViewModels
         public CountdownViewModel()
         {
             CancelCommand = new Command(async () => await CancelAsync());
-            messagingService.Subscribe<EggsCookingTime>(this, StartTimer, async time =>
+            messagingService.Subscribe<int>(this, StartTimer, async id =>
             {
-                await StartAsync(time);
-                messagingService.Unsubscribe<EggsCookingTime>(this, StartTimer);
+                await StartAsync(id);
+                messagingService.Unsubscribe<int>(this, StartTimer);
             });
         }
 
@@ -42,18 +42,12 @@ namespace EggsTimer.ViewModels
 
         public ICommand CancelCommand { get; set; }
 
-        public async Task StartAsync(EggsCookingTime time)
+        public async Task StartAsync(int id)
         {
             DateTime d = DateTime.Now;
             DateTime currentDate = new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second);
-            TimerModel timerModel = new TimerModel()
-            {
-                Name = Enum.GetName(typeof(EggsCookingTime), time), 
-                StartTime = currentDate,
-                Duration = time,
-                IsStarted = true
-            };
-            timerModel = await timerService.Create(timerModel);
+
+            TimerModel timerModel = await timerService.Read(id);
             DateTime endTime = currentDate.AddSeconds((int)timerModel.Duration);
 
             Counter = (endTime - currentDate);

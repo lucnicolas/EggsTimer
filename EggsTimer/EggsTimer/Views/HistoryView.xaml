@@ -20,7 +20,7 @@
                 SelectedItem="{Binding Selected, Mode=TwoWay}">
             <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Detail="{Binding Duration}" Text="{Binding StartTime}" />
+                        <TextCell Detail="{Binding Duration, StringFormat='Duration (in seconds): {0}'}" Text="{Binding StartTime, StringFormat='Start time: {0}'}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

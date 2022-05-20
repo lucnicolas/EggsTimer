@@ -19,7 +19,7 @@ namespace EggsTimer.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var filePath = Path.Combine(directory, "Notepad.db3");
+            var filePath = Path.Combine(directory, "EggsTimer.db3");
             optionsBuilder.UseSqlite($"Filename={filePath}");
         }
     }

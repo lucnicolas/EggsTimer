@@ -18,18 +18,12 @@
                     HorizontalOptions="CenterAndExpand"
                     CornerRadius="20" />
 
-            <Button Text="Boiled"
-                    Command="{Binding StartBoiledCommand}"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="CenterAndExpand"
-                    CornerRadius="20" />
-            <Button Command="{Binding StartSoftBoiledCommand}"
-                    Text="Soft Boiled"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="CenterAndExpand"
-                    CornerRadius="20" />
-            <Button Command="{Binding StartHardBoiledCommand}"
-                    Text="Hard Boiled"
+            <Editor
+                Placeholder="Cooking time in seconds..."
+                Text="{Binding Model.Duration, Mode=TwoWay}"
+                VerticalOptions="FillAndExpand" />
+            <Button Command="{Binding StartCommand}"
+                    Text="Start"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     CornerRadius="20" />
